@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Registration Form with Slideshow</title>
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body class="bg-light">
+
+<div class="container mt-5">
+
+    <!-- Slideshow / Carousel -->
+    <div id="carouselExample" class="carousel slide mb-5" data-bs-ride="carousel">
+        <div class="carousel-inner text-center">
+
+            <div class="carousel-item active">
+                <img src="carousel.jpg" class="d-block mx-auto w-75" alt="Slide 1">
+            </div>
+
+            <div class="carousel-item">
+                <img src="carousel2.jpg" class="d-block mx-auto w-75" alt="Slide 2">
+            </div>
+
+            <div class="carousel-item">
+                <img src="carousel3.jpg" class="d-block mx-auto w-75" alt="Slide 3">
+            </div>
+
+        </div>
+
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+        </button>
+
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+            <span class="carousel-control-next-icon"></span>
+        </button>
+    </div>
+
+    <!-- Registration Form -->
+    <div class="card shadow">
+        <div class="card-header bg-primary text-white text-center">
+            <h4>Registration Form</h4>
+        </div>
+
+        <div class="card-body">
+            <form id="registerForm">
+
+                <div class="mb-3">
+                    <label class="form-label">Full Name</label>
+                    <input type="text" class="form-control" id="name" required>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Email Address</label>
+                    <input type="email" class="form-control" id="email" required>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Password</label>
+                    <input type="password" class="form-control" id="password" required>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Gender</label><br>
+                    <input type="radio" name="gender" value="Male" required> Male
+                    <input type="radio" name="gender" value="Female" class="ms-3"> Female
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Course</label>
+                    <select class="form-select" id="course" required>
+                        <option value="">Select Course</option>
+                        <option>Computer Science</option>
+                        <option>Information Technology</option>
+                        <option>ECE</option>
+                        <option>EEE</option>
+                    </select>
+                </div>
+
+                <div class="text-center">
+                    <button type="submit" class="btn btn-success">Register</button>
+                    <button type="reset" class="btn btn-danger ms-2">Reset</button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+    <!-- Success Message -->
+    <div id="successMsg" class="alert alert-success mt-4 d-none text-center">
+        Registration Successful!
+    </div>
+
+    <!-- Cart Details -->
+    <div id="cartDetails" class="card mt-4 d-none">
+        <div class="card-header bg-dark text-white">
+            <h5>Shopping Cart Details</h5>
+        </div>
+        <div class="card-body">
+            <p><strong>Item Prices:</strong> <span id="priceList"></span></p>
+            <p><strong>Total Cost:</strong> ₹<span id="totalCost"></span></p>
+        </div>
+    </div>
+
+</div>
+
+<!-- Bootstrap 5 JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- JavaScript Logic -->
+<script>
+    document.getElementById("registerForm").addEventListener("submit", function(event) {
+        event.preventDefault(); // stop page refresh
+
+        // Show success message
+        document.getElementById("successMsg").classList.remove("d-none");
+
+        // Shopping cart prices
+        let prices = [250, 150, 400, 100, 300];
+
+        // Calculate total cost
+        let total = prices.reduce((sum, price) => sum + price, 0);
+
+        // Display cart details
+        document.getElementById("priceList").innerText = prices.join(", ");
+        document.getElementById("totalCost").innerText = total;
+        document.getElementById("cartDetails").classList.remove("d-none");
+    });
+</script>
+
+</body>
+</html>
